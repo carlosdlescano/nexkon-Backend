@@ -15,11 +15,12 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.springframework.stereotype.Repository;
 /**
  *
  * @author POS
  */
+@Repository
 public class ArticuloDAOImpl implements ArticuloDAO {
 
     private Connection con;
@@ -265,6 +266,10 @@ public class ArticuloDAOImpl implements ArticuloDAO {
                 art.setMargen(rs.getDouble("margen"));
                 art.setPrecioVenta(rs.getDouble("precioActual"));
                 art.setCodigoBarra(rs.getLong("CodigoBarra"));
+                art.setNombreMarca(rs.getString("nombreMarca"));
+                art.setNombreDepartamento(rs.getString("nombreDepartamento"));
+                art.setNombreRubro(rs.getString("nombreRubro"));
+                art.setNombreFamilia(rs.getString("nombreFamilia"));
 
                 lista.add(art);
             }

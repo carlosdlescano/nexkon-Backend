@@ -5,35 +5,57 @@
 package com.minegocio.controller;
 
 import com.minegocio.DAO.VentaDAO;
-import com.minegocio.model.DetalleVenta;
+import com.minegocio.model.*;
+import com.minegocio.dto.VentaRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author POS
  */
+@RestController
+@RequestMapping("/api/ventas")
+@CrossOrigin(origins = "http://localhost:5173")
 public class VentaControlador {
-   private VentaDAO ventaDAO;
-
-    public VentaControlador() {
-        // El controlador se encarga de obtener la conexión y crear el DAO 
+   
+   private final VentaDAO ventaDAO;
+   @Autowired
+    public VentaControlador(VentaDAO ventaDAO) {
+        this.ventaDAO = ventaDAO;
     }
     
-    public boolean registrarVenta(String cliente, String medioPago, List<DetalleVenta> detalles) {
-        if (cliente == null || cliente.trim().isEmpty()) {
-            System.out.println("Cliente no válido.");
-            return false;
-        }
+    @PostMapping("/registrar")
+    public boolean registrarVenta(@RequestBody VentaRequest request) {
+        // Generamos la fecha del sistema al momento exacto de procesar en el servidor
+        Timestamp fechaActual = new Timestamp(System.currentTimeMillis());
+        
+        return ventaDAO.grabarVenta(
+                request.getCliente(), 
+                fechaActual, 
+                request.getMedioPago(), 
+                request.getDetalles()
+        );
+    }
 
-        if (detalles == null || detalles.isEmpty()) {
-            System.out.println("No se puede registrar una venta sin artículos.");
-            return false;
-        }
+    // 2. BUSCADOR DINÁMICO DE VENTAS (GET)
+    // Ejemplo desde React para Reportes: /api/ventas/buscar?cliente=Juan
+    @GetMapping("/buscar")
+    public ArrayList<Venta> buscarVentas(
+            @RequestParam(required = false) Long desde, // Recibe timestamp en milisegundos de JS
+            @RequestParam(required = false) Long hasta,
+            @RequestParam(required = false) String cliente,
+            @RequestParam(required = false) String medioPago) {
 
-        Timestamp fechaVenta = new Timestamp(System.currentTimeMillis());
+        Timestamp fechaInicio = (desde != null) ? new Timestamp(desde) : null;
+        Timestamp fechaFin = (hasta != null) ? new Timestamp(hasta) : null;
 
-        return ventaDAO.grabarVenta(cliente, fechaVenta, medioPago, detalles);
+        return ventaDAO.buscarVenta(fechaInicio, fechaFin, cliente, medioPago);
     }
 
 }

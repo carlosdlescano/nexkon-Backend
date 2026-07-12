@@ -10,7 +10,8 @@ import com.minegocio.DAO.VentaDAO;
 import com.minegocio.model.DetalleVenta;
 import com.minegocio.model.Venta;
 import com.minegocio.util.Conexion;
-import com.minegocio.util.util;
+import org.springframework.stereotype.Repository;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,18 +20,20 @@ import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.scene.control.Alert;
+
 
 /**
  *
  * @author POS
  */
+@Repository
 public class VentaDAOImpl implements VentaDAO {
 
     private Connection con;
     private SQLServerCallableStatement stmt = null; // se usa el tipo SQLServerCallableStatement para que se pueda enviar la estructura en la posicion 3
     private boolean exito = false;
-
+    
+    @Override
     public boolean grabarVenta(String cliente, Timestamp fechaVenta, String medioPago, List<DetalleVenta> detalles) {
         con = null;
 
@@ -55,8 +58,7 @@ public class VentaDAOImpl implements VentaDAO {
             stmt.close();
             exito = true;
         } catch (SQLException e) {
-            util.mostrarAlerta("Error al cargar la venta", e.getMessage(), Alert.AlertType.WARNING, false);
-            System.out.println("Error al cargar la venta: " + e.getMessage());
+            System.err.println("Error en la transacción de venta: " + e.getMessage());
         } finally {
             try {
                 if (stmt != null) {

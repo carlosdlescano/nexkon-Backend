@@ -13,11 +13,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author POS
  */
+@Repository
 public class DepartamentoDAOImpl implements DepartamentoDAO{
 
     @Override

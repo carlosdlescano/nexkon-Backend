@@ -14,12 +14,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
-import javafx.fxml.FXML;
+import org.springframework.stereotype.Repository;
+
 
 /**
  *
  * @author miNegocio
  */
+@Repository
 public class DetalleVentaDAOImpl implements DetalleVentaDAO {
 
     @Override
@@ -100,7 +102,7 @@ public class DetalleVentaDAOImpl implements DetalleVentaDAO {
 
         return lista;
     }
-    @FXML
+    
     public ArrayList<DetalleVenta> buscarVentaNro(Integer idVenta){
         return buscarVenta(idVenta, null, null, null);               
               

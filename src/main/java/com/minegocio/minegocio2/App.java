@@ -1,49 +1,18 @@
 package com.minegocio.minegocio2;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-import com.minegocio.DAO.ArticuloDAO;
-import com.minegocio.DaoImpl.ArticuloDAOImpl;
-import com.minegocio.model.Articulo;
-import java.io.IOException;
-import java.util.ArrayList;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+@SpringBootApplication(exclude = {org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration.class})
+// El ComponentScan es clave: le dice a Spring que busque componentes en la raíz del proyecto
+@ComponentScan(basePackages = "com.minegocio") 
 
-
-
-/**
- * JavaFX App
- */
-public class App extends Application {
-
-    private static Scene scene;
-
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("/Vistas/VistaLogin"), 200, 250);//carga vista principal
-        scene.getStylesheets().add(getClass().getResource("/estilos.css").toExternalForm());//carga estilos
-        
-        stage.setTitle("Login");
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));        
-        return fxmlLoader.load();
-    }
+public class App {
 
     public static void main(String[] args) {
-       launch();
-        
+        // Esta línea apaga el entorno gráfico de escritorio y levanta el servidor web Tomcat
+        SpringApplication.run(App.class, args);
+        System.out.println("🚀 ¡Servidor de NexKon corriendo localmente en http://localhost:8080!");
     }
-    
-
 }

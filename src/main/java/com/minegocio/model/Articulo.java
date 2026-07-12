@@ -5,7 +5,6 @@
 package com.minegocio.model;
 
 //import java.math.BigDecimal;
-
 /**
  *
  * @author POS
@@ -46,6 +45,10 @@ public class Articulo {
     private double precioVenta;
     private int estado;
     private long codigoBarra;
+    private String nombreMarca;
+    private String nombreDepartamento;
+    private String nombreRubro;
+    private String nombreFamilia;
 
     public Articulo(int codigo, int marca, int departamento, int rubro, int familia, String descipcion, int stock, int StockCritico, double precioCosto, double margen, double precioVenta, int estado, long codigoBarra) {
         this.codigo = codigo;
@@ -70,7 +73,40 @@ public class Articulo {
         this.descripcion = descripcion;
     }
 
+    public String getNombreMarca() {
+        return nombreMarca;
+    }
+
+    public void setNombreMarca(String nombreMarca) {
+        this.nombreMarca = nombreMarca;
+    }
+
+    public String getNombreDepartamento() {
+        return nombreDepartamento;
+    }
+
+    public void setNombreDepartamento(String nombreDepartamento) {
+        this.nombreDepartamento = nombreDepartamento;
+    }
+
+    public String getNombreRubro() {
+        return nombreRubro;
+    }
+
+    public void setNombreRubro(String nombreRubro) {
+        this.nombreRubro = nombreRubro;
+    }
+
+    public String getNombreFamilia() {
+        return nombreFamilia;
+    }
+
+    public void setNombreFamilia(String nombreFamilia) {
+        this.nombreFamilia = nombreFamilia;
+    }
     
+    
+
     public int getStockCritico() {
         return StockCritico;
     }

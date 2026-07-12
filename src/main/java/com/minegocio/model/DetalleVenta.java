@@ -4,6 +4,7 @@
  */
 package com.minegocio.model;
 
+
 /**
  *
  * @author POS
@@ -14,8 +15,7 @@ public class DetalleVenta {
     private int idVenta;
     private int idCodArticulo;
     private int cantidad;
-    private double precio;
-    private Articulo articulo;
+    private double precio;    
     private String nombreArticulo;
 
     public DetalleVenta() {
@@ -48,12 +48,7 @@ public class DetalleVenta {
         this.idCodArticulo = idCodArticulo;
         this.cantidad = cantidad;
     }
-
-    public DetalleVenta(int cantidad, Articulo articulo) {
-        this.cantidad = cantidad;
-        this.articulo = articulo;
-    }
-
+    
     public String getNombreArticulo() {
         return nombreArticulo;
     }
@@ -62,15 +57,6 @@ public class DetalleVenta {
         this.nombreArticulo = nombreArticulo;
     }
     
-    
-    public Articulo getArticulo() {
-        return articulo;
-    }
-
-    public void setArticulo(Articulo articulo) {
-        this.articulo = articulo;
-    }
-
     public int getIdDetalle() {
         return idDetalle;
     }
