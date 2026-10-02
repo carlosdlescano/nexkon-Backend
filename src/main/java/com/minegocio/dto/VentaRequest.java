@@ -18,7 +18,6 @@ public class VentaRequest {
     
     public VentaRequest(){}
 
-    // Getters y Setters necesarios para que Spring traduzca el JSON
     public String getCliente() { return cliente; }
     public void setCliente(String cliente) { this.cliente = cliente; }
     public String getMedioPago() { return medioPago; }

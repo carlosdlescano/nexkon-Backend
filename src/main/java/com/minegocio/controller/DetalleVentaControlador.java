@@ -19,7 +19,7 @@ public class DetalleVentaControlador {
     @Autowired
     private DetalleVentaDAO detalleVentaDAO;
 
-    // 1. FILTRO DINÁMICO: Responde a GET /api/detalles-ventas/buscar?idVenta=24
+    // 1. FILTRO DINÁMICO: GET 
     @GetMapping("/buscar")
     public ArrayList<DetalleVenta> buscar(
             @RequestParam(required = false) Integer idVenta,

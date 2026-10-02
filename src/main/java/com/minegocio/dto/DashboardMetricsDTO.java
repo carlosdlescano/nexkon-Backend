@@ -2,23 +2,31 @@
 package com.minegocio.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class DashboardMetricsDTO {
     private BigDecimal totalFacturadoHoy;
     private int cantidadVentasHoy;
     private int articulosEnStockCritico;
+    private List<VentasMensualesDTO> ventasMensuales;
 
-    // Constructor vacío
+    
     public DashboardMetricsDTO() {}
 
-    // Constructor completo
+    
     public DashboardMetricsDTO(BigDecimal totalFacturadoHoy, int cantidadVentasHoy, int articulosEnStockCritico) {
         this.totalFacturadoHoy = totalFacturadoHoy;
         this.cantidadVentasHoy = cantidadVentasHoy;
         this.articulosEnStockCritico = articulosEnStockCritico;
     }
 
-    // Getters y Setters
+    public DashboardMetricsDTO(BigDecimal totalFacturadoHoy, int cantidadVentasHoy, int articulosEnStockCritico, List<VentasMensualesDTO> ventasMensuales) {
+        this.totalFacturadoHoy = totalFacturadoHoy;
+        this.cantidadVentasHoy = cantidadVentasHoy;
+        this.articulosEnStockCritico = articulosEnStockCritico;
+        this.ventasMensuales = ventasMensuales;
+    }
+    
     public BigDecimal getTotalFacturadoHoy() { return totalFacturadoHoy; }
     public void setTotalFacturadoHoy(BigDecimal totalFacturadoHoy) { this.totalFacturadoHoy = totalFacturadoHoy; }
 
@@ -27,4 +35,9 @@ public class DashboardMetricsDTO {
 
     public int getArticulosEnStockCritico() { return articulosEnStockCritico; }
     public void setArticulosEnStockCritico(int articulosEnStockCritico) { this.articulosEnStockCritico = articulosEnStockCritico; }
+
+    public List<VentasMensualesDTO> getVentasMensuales() {  return ventasMensuales;    }
+    public void setVentasMensuales(List<VentasMensualesDTO> ventasMensuales) {        this.ventasMensuales = ventasMensuales;    }
+    
+    
 }

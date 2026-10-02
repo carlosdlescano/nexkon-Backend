@@ -21,7 +21,7 @@ public class RubroControlador {
     @Autowired
     private RubroDAO rubroDAO;
 
-    // Responde a un GET a http://localhost:8080/api/rubros
+    // Responde a GET http://localhost:8080/api/rubros
     @GetMapping
     public List<Rubro> listar() {
         return rubroDAO.ListarTodos();

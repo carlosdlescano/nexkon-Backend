@@ -21,7 +21,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/ventas")
-@CrossOrigin(origins = "http://localhost:5173")
 public class VentaControlador {
    
    private final VentaDAO ventaDAO;
@@ -32,7 +31,7 @@ public class VentaControlador {
     
     @PostMapping("/registrar")
     public boolean registrarVenta(@RequestBody VentaRequest request) {
-        // Generamos la fecha del sistema al momento exacto de procesar en el servidor
+        // fecha del sistema al momento exacto de procesar en el servidor
         Timestamp fechaActual = new Timestamp(System.currentTimeMillis());
         
         return ventaDAO.grabarVenta(
@@ -44,10 +43,10 @@ public class VentaControlador {
     }
 
     // 2. BUSCADOR DINÁMICO DE VENTAS (GET)
-    // Ejemplo desde React para Reportes: /api/ventas/buscar?cliente=Juan
+    // Ejemplo /api/ventas/buscar?cliente=Juan
     @GetMapping("/buscar")
     public ArrayList<Venta> buscarVentas(
-            @RequestParam(required = false) Long desde, // Recibe timestamp en milisegundos de JS
+            @RequestParam(required = false) Long desde, 
             @RequestParam(required = false) Long hasta,
             @RequestParam(required = false) String cliente,
             @RequestParam(required = false) String medioPago) {

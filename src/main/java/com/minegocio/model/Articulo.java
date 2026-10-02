@@ -103,10 +103,8 @@ public class Articulo {
 
     public void setNombreFamilia(String nombreFamilia) {
         this.nombreFamilia = nombreFamilia;
-    }
+    }  
     
-    
-
     public int getStockCritico() {
         return StockCritico;
     }

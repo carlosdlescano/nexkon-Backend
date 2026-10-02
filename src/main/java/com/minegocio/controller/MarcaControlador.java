@@ -17,7 +17,7 @@ public class MarcaControlador {
     @Autowired
     private MarcaDAO marcaDAO;
 
-    // Responde a un GET a http://localhost:8080/api/marcas
+    // Responde a GET http://localhost:8080/api/marcas
     @GetMapping
     public List<Marca> listar() {
         return marcaDAO.ListarTodos();

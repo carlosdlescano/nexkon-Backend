@@ -34,28 +34,28 @@ public class DetalleVentaDAOImpl implements DetalleVentaDAO {
             con = Conexion.getConexion();
             stmt = con.prepareCall("{call spBuscarDetalleVentaDinamico(?, ?, ?, ?)}");
 
-            // Parámetro 1: idVenta
+            
             if (idVenta != null) {
                 stmt.setInt(1, idVenta);
             } else {
                 stmt.setNull(1, Types.INTEGER);
             }
 
-            // Parámetro 2: idCodArticulo
+            
             if (idCodArticulo != null) {
                 stmt.setInt(2, idCodArticulo);
             } else {
                 stmt.setNull(2, Types.INTEGER);
             }
 
-            // Parámetro 3: precioMin
+            
             if (precioMin != null) {
                 stmt.setDouble(3, precioMin);
             } else {
                 stmt.setNull(3, Types.DECIMAL);
             }
 
-            // Parámetro 4: precioMax
+            
             if (precioMax != null) {
                 stmt.setDouble(4, precioMax);
             } else {
@@ -64,15 +64,15 @@ public class DetalleVentaDAOImpl implements DetalleVentaDAO {
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                // Construimos el objeto Articulo
+                
                 Articulo art = new Articulo(
                         rs.getInt("idCodArticulo"),
                         rs.getInt("codigo"),
                         rs.getInt("marca"),
-                        rs.getString("nombreArticulo") // alias de la descripción
+                        rs.getString("nombreArticulo") 
                 );
 
-                // Construimos el objeto DetalleVenta
+                
                 DetalleVenta d = new DetalleVenta(
                         rs.getInt("idDetalle"),
                         rs.getInt("idVenta"),
@@ -81,7 +81,7 @@ public class DetalleVentaDAOImpl implements DetalleVentaDAO {
                         rs.getDouble("precioUnitario"),
                         rs.getString("nombreArticulo")
                 );
-                //d.setNombreArticulo(rs.getString("nombreArticulo"));
+                
                 lista.add(d);
             }
 

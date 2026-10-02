@@ -25,9 +25,7 @@ public class ArticuloDAOImpl implements ArticuloDAO {
 
     private Connection con;
 
-    /*public ArticuloDAOImpl(Connection con) {
-        this.con = con;
-    }*/
+    
     @Override
     public boolean crearArticulo(Articulo art) {
         con = null;
@@ -79,9 +77,9 @@ public class ArticuloDAOImpl implements ArticuloDAO {
             con = Conexion.getConexion();
             stmt = con.prepareCall("{call spActualizarArticulo(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}");
 
-            stmt.setInt(1, art.getIdCodArticulo()); // clave primaria
-            stmt.setInt(2, art.getCodigo());   // se puede modificar
-            stmt.setInt(3, art.getMarca());    // se puede modificar
+            stmt.setInt(1, art.getIdCodArticulo()); 
+            stmt.setInt(2, art.getCodigo());   
+            stmt.setInt(3, art.getMarca());    
             stmt.setInt(4, art.getCodDepartamento());
             stmt.setInt(5, art.getCodRubro());
             stmt.setInt(6, art.getCodFamilia());
@@ -194,8 +192,8 @@ public class ArticuloDAOImpl implements ArticuloDAO {
         /**/
         try {
             con = Conexion.getConexion();
-            stmt = con.prepareCall("{call spBuscarArticuloFlexible(?, ?, ?, ?, ?, ?, ?)}");//se ingresan como null los que no se tiene
-            //orden de parametros: codigo,marca,descipcion,departamento,rubro,familia,codigodebarra
+            stmt = con.prepareCall("{call spBuscarArticuloFlexible(?, ?, ?, ?, ?, ?, ?)}");
+            
             stmt.setObject(1, codigo != 0 ? codigo : null, Types.INTEGER);
             stmt.setObject(2, marca != 0 ? marca : null, Types.INTEGER);
             stmt.setObject(3, descripcion != null && !descripcion.isEmpty() ? descripcion : null, Types.VARCHAR);

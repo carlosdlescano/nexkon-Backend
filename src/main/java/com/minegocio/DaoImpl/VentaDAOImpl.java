@@ -30,7 +30,7 @@ import java.util.List;
 public class VentaDAOImpl implements VentaDAO {
 
     private Connection con;
-    private SQLServerCallableStatement stmt = null; // se usa el tipo SQLServerCallableStatement para que se pueda enviar la estructura en la posicion 3
+    private SQLServerCallableStatement stmt = null; 
     private boolean exito = false;
     
     @Override
@@ -148,21 +148,3 @@ public class VentaDAOImpl implements VentaDAO {
 
 }
 
-/*Implementacion de metodo en main
-
-public class VentaControlador {
-
-    private VentaDAO ventaDAO;
-
-    public VentaControlador(Connection conn) {
-        this.ventaDAO = new VentaDAOImpl(conn);
-    }
-
-    public void registrarVenta(String cliente, List<DetalleVenta> detalles) {
-        try {
-            ventaDAO.grabarVenta(cliente, new Timestamp(System.currentTimeMillis()), detalles);
-        } catch (SQLException e) {
-            e.printStackTrace(); // o manejo más elegante
-        }
-    }
-}*/

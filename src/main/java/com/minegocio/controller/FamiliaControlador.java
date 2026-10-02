@@ -17,7 +17,7 @@ public class FamiliaControlador {
     @Autowired
     private FamiliaDAO familiaDAO;
 
-    // Responde a un GET a http://localhost:8080/api/familias
+    // Responde a GET http://localhost:8080/api/familias
     @GetMapping
     public List<Familia> listar() {
         return familiaDAO.ListarTodos();
