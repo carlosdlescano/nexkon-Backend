@@ -50,11 +50,6 @@ public class CompraDAOImpl implements CompraDAO {
 
             // 4. @medioPago
             stmt.setString(4, medioPago);
-//            if (medioPago != null && !medioPago.trim().isEmpty()) {
-//                stmt.setString(4, medioPago);
-//            } else {
-//                stmt.setNull(4, Types.VARCHAR);
-//            }
 
             // 5. @DetallesCompra (Estructura TVP coincidente con DetalleCompraType)
             SQLServerDataTable tvp = new SQLServerDataTable();

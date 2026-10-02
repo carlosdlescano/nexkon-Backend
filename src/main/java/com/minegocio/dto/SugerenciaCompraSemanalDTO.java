@@ -12,10 +12,8 @@ public class SugerenciaCompraSemanalDTO {
     private Integer demandaEstimadaSemanal;
     private Integer cantidadSugeridaAComprar;
 
-    // Constructor vacío
     public SugerenciaCompraSemanalDTO() {}
-
-    // Constructor completo
+  
     public SugerenciaCompraSemanalDTO(Integer idArticulo, String codigoArticulo, String nombreArticulo, 
                                         Integer stockActual, Integer stockCritico, Integer consumoDiarioPromedio, 
                                         Integer demandaEstimadaSemanal, Integer cantidadSugeridaAComprar) {
@@ -29,7 +27,6 @@ public class SugerenciaCompraSemanalDTO {
         this.cantidadSugeridaAComprar = cantidadSugeridaAComprar;
     }
 
-    // Getters y Setters
     public Integer getIdArticulo() { return idArticulo; }
     public void setIdArticulo(Integer idArticulo) { this.idArticulo = idArticulo; }
 

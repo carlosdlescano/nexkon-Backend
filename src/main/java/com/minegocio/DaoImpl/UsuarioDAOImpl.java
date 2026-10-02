@@ -250,7 +250,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
     try (Connection con = Conexion.getConexion();            
          PreparedStatement stmt = con.prepareStatement(sql)) {
 
-        // Asignamos los 3 parámetros en orden correcto
         stmt.setInt(1, intentos);
         stmt.setInt(2, activo);
         stmt.setInt(3, legajo);

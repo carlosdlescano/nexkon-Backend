@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reportes")
-//@CrossOrigin(origins = "*") // Permite las peticiones desde el cliente React
 public class ReporteControlador {
 
     private final ReporteService reporteService;

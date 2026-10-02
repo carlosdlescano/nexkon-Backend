@@ -29,26 +29,6 @@ public class UsuarioControlador {
         public void setPassword(String password) { this.password = password; }
     }
 
-    /*@PostMapping("/login")
-    public ResponseEntity<?> autenticar(@RequestBody LoginRequest request) {
-        if (request.getIdentificador() == null || request.getIdentificador().trim().isEmpty() || 
-            request.getPassword() == null || request.getPassword().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("Credenciales incompletas.");
-        }
-
-        Usuario usuario = usuarioDAO.buscarPorEmailODni(request.getIdentificador().trim());
-
-        if (usuario == null || (usuario.getActivo() != null && !usuario.getActivo())) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Usuario no encontrado o inactivo.");
-        }
-
-        if (PasswordUtils.checkPassword(request.getPassword(), usuario.getPasswordHash())) {
-            usuario.setPasswordHash(null); 
-            return ResponseEntity.ok(usuario);
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Contraseña incorrecta.");
-        }
-    }*/
 @PostMapping("/login")
 public ResponseEntity<?> autenticar(@RequestBody LoginRequest request) {
     

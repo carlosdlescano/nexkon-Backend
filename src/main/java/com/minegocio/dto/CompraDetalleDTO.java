@@ -8,7 +8,7 @@ public class CompraDetalleDTO {
     private int cantidad;
     private double precioCosto; 
 
-    // Getters y Setters
+
     public int getIdProducto() { return idProducto; }
     public void setIdProducto(int idProducto) { this.idProducto = idProducto; }
 

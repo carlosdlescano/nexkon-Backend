@@ -42,29 +42,6 @@ public class CompraControlador {
                 request.getDetalles()
         );
     }
-//    @PostMapping("/registrar")
-//public boolean registrarCompra(@RequestBody CompraRequest request) {
-//    Timestamp fechaActual = new Timestamp(System.currentTimeMillis());
-//
-//    // Validar que los detalles no vengan nulos ni con precioCosto nulo
-//    if (request.getDetalles() != null) {
-//        for (DetalleCompraDTO detalle : request.getDetalles()) {
-//            if (detalle.getPrecioCosto() == null) {
-//                // Asigna un valor por defecto si no viene en el JSON para evitar la excepción SQL
-//                detalle.setPrecioCosto(0.0); 
-//            }
-//        }
-//    }
-//
-//    return compraDAO.grabarCompra(
-//            request.getProveedor(),
-//            request.getIdProveedor(),
-//            fechaActual,
-//            request.getMedioPago(),
-//            request.getDetalles()
-//    );
-//}
-
     // BUSCADOR DINÁMICO DE COMPRAS (GET)
     // Ejemplo /api/compras/buscar?proveedor=Distribuidora
     @GetMapping("/buscar")

@@ -29,7 +29,6 @@ public class ProveedorControlador {
             @RequestParam(required = false) String cuit,
             @RequestParam(required = false) Boolean activo) {
         try {
-            // Si el DAO tiene búsqueda por filtros usa esa, de lo contrario lista activos/todos
             List<Proveedor> lista = proveedorDAO.listar();
             return ResponseEntity.ok(lista);
         } catch (Exception e) {
